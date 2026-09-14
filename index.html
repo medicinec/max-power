@@ -4,13 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>MAX POWER</title>
+<title>MAX POWER FOR MEN</title>
 
 <style>
 *{
   box-sizing:border-box;
-  margin:0;
-  padding:0;
 }
 
 html{
@@ -18,168 +16,125 @@ html{
 }
 
 body{
+  margin:0;
   font-family:Arial,"Noto Sans Bengali",sans-serif;
-  background:#f5f7f8;
-  color:#17202a;
-  overflow-x:hidden;
+  background:#f3f7f4;
+  color:#17251d;
 }
 
-/* ===== HEADER ===== */
-
-header{
-  position:relative;
-  overflow:hidden;
-  text-align:center;
+.header{
+  background:linear-gradient(135deg,#063d25,#0b6b3d,#063d25);
   color:white;
-  padding:22px 15px 25px;
-  background:
-    radial-gradient(circle at 20% 10%,rgba(255,210,70,.20),transparent 25%),
-    radial-gradient(circle at 90% 80%,rgba(0,255,170,.12),transparent 30%),
-    linear-gradient(135deg,#06120d,#0b2418,#07110c);
+  text-align:center;
+  padding:22px 15px;
+  box-shadow:0 4px 18px rgba(0,0,0,.2);
+  animation:glow 3s infinite alternate;
 }
 
-header:before{
-  content:"";
-  position:absolute;
-  width:180px;
-  height:180px;
-  border-radius:50%;
-  background:rgba(255,193,7,.08);
-  filter:blur(12px);
-  top:-80px;
-  left:-50px;
-  animation:floatGlow 5s infinite ease-in-out;
+@keyframes glow{
+  from{box-shadow:0 4px 18px rgba(0,0,0,.2)}
+  to{box-shadow:0 4px 28px rgba(0,120,70,.45)}
 }
 
-header:after{
-  content:"";
-  position:absolute;
-  width:160px;
-  height:160px;
-  border-radius:50%;
-  background:rgba(0,255,170,.07);
-  filter:blur(15px);
-  right:-50px;
-  bottom:-70px;
-  animation:floatGlow 6s infinite ease-in-out reverse;
+.header h1{
+  margin:0;
+  font-size:30px;
 }
 
-.logo{
-  position:relative;
-  z-index:2;
-  font-size:31px;
-  font-weight:900;
-  letter-spacing:2px;
-  text-shadow:0 0 20px rgba(255,193,7,.35);
+.header p{
+  margin:8px 0 0;
+  font-size:15px;
 }
-
-.tagline{
-  position:relative;
-  z-index:2;
-  margin-top:6px;
-  font-size:13px;
-  opacity:.88;
-}
-
-/* ===== LIKE ===== */
 
 .like-box{
-  position:relative;
-  z-index:3;
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  margin-top:15px;
-  padding:7px 13px;
-  border:1px solid rgba(255,255,255,.18);
-  border-radius:30px;
-  background:rgba(255,255,255,.08);
-  backdrop-filter:blur(10px);
+  margin-top:12px;
 }
 
 .like-btn{
   border:0;
-  background:none;
-  color:white;
-  font-weight:bold;
+  background:white;
+  color:#d21d35;
+  border-radius:25px;
+  padding:9px 18px;
+  font-size:16px;
   cursor:pointer;
-  padding:5px;
 }
 
-.like-count{
-  font-weight:bold;
-  min-width:20px;
+.like-btn:active{
+  transform:scale(.92);
 }
-
-.like-pop{
-  animation:likePop .4s ease;
-}
-
-/* ===== MAIN ===== */
 
 .container{
-  width:min(94%,720px);
+  max-width:900px;
   margin:auto;
-  padding-bottom:100px;
+  padding:15px;
 }
 
-/* ===== IMAGE SLIDER ===== */
-
-.slider-card{
-  position:relative;
-  margin-top:15px;
-  padding:9px;
+.card{
   background:white;
-  border-radius:23px;
-  box-shadow:0 12px 35px rgba(0,0,0,.14);
+  border-radius:18px;
+  padding:18px;
+  margin:16px 0;
+  box-shadow:0 5px 20px rgba(0,0,0,.08);
   animation:fadeUp .7s ease;
 }
 
+@keyframes fadeUp{
+  from{
+    opacity:0;
+    transform:translateY(20px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+/* SLIDER */
 .slider{
   position:relative;
-  height:390px;
   overflow:hidden;
-  border-radius:17px;
-  background:#f4f5f6;
+  border-radius:16px;
+  background:#eee;
 }
 
-.slide{
-  display:none;
+.slider img{
   width:100%;
-  height:100%;
-}
-
-.slide.active{
-  display:block;
-  animation:slideEffect .65s ease;
-}
-
-.slide img{
-  width:100%;
-  height:100%;
+  height:390px;
   object-fit:contain;
+  display:none;
+  background:white;
+  animation:photoIn .5s ease;
+}
+
+.slider img.active{
+  display:block;
+}
+
+@keyframes photoIn{
+  from{
+    opacity:.2;
+    transform:scale(.97);
+  }
+  to{
+    opacity:1;
+    transform:scale(1);
+  }
 }
 
 .arrow{
   position:absolute;
-  z-index:5;
   top:50%;
   transform:translateY(-50%);
-  width:44px;
-  height:44px;
+  width:42px;
+  height:42px;
   border:0;
   border-radius:50%;
   background:rgba(0,0,0,.55);
   color:white;
-  font-size:29px;
+  font-size:25px;
   cursor:pointer;
-  backdrop-filter:blur(5px);
-  transition:.25s;
-}
-
-.arrow:hover{
-  transform:translateY(-50%) scale(1.1);
-  background:rgba(0,0,0,.75);
+  z-index:2;
 }
 
 .prev{
@@ -191,305 +146,179 @@ header:after{
 }
 
 .dots{
-  position:absolute;
-  bottom:10px;
-  left:50%;
-  transform:translateX(-50%);
-  display:flex;
-  gap:5px;
+  text-align:center;
+  padding:10px;
 }
 
 .dot{
-  width:7px;
-  height:7px;
-  background:rgba(0,0,0,.25);
-  border-radius:10px;
+  display:inline-block;
+  width:9px;
+  height:9px;
+  margin:3px;
+  border-radius:50%;
+  background:#bbb;
+  cursor:pointer;
 }
 
 .dot.active{
-  width:20px;
-  background:#111;
+  background:#08763f;
 }
 
-/* ===== PRODUCT ===== */
-
-.card{
-  margin-top:17px;
-  padding:22px 18px;
-  background:white;
-  border-radius:23px;
-  box-shadow:0 10px 32px rgba(0,0,0,.09);
-  animation:fadeUp .8s ease;
-}
-
-.badge{
-  display:inline-block;
-  padding:6px 12px;
-  border-radius:20px;
-  background:#fff3cd;
-  color:#795600;
-  font-size:12px;
-  font-weight:bold;
-}
-
-h1{
-  margin-top:10px;
-  font-size:29px;
-  font-weight:900;
-}
-
-.desc{
-  margin-top:8px;
-  font-size:14px;
-  line-height:1.6;
-  color:#68737c;
-}
-
-/* ===== PRICE ===== */
-
-.price-area{
-  margin-top:18px;
-  padding:17px;
+.product-title{
   text-align:center;
-  border-radius:17px;
-  background:linear-gradient(135deg,#fff9e5,#fff);
-  border:1px solid #efdda1;
+  color:#075c35;
+  font-size:25px;
+  margin:8px 0;
 }
 
 .old-price{
-  color:#8a929a;
+  text-align:center;
+  font-size:19px;
+  color:#777;
   text-decoration:line-through;
-  font-size:18px;
 }
 
-.current-price{
-  margin-top:2px;
-  color:#d39800;
-  font-size:40px;
-  font-weight:900;
-  animation:pricePulse 2.5s infinite;
+.price{
+  text-align:center;
+  font-size:34px;
+  font-weight:bold;
+  color:#07813f;
+  margin:5px;
+  animation:pricePulse 1.8s infinite;
+}
+
+@keyframes pricePulse{
+  50%{transform:scale(1.04)}
 }
 
 .offer{
-  margin-top:6px;
-  color:#08733e;
-  font-size:14px;
+  text-align:center;
+  color:#d92323;
   font-weight:bold;
-  animation:softPulse 2s infinite;
+  animation:pulse 1.5s infinite;
 }
 
-/* ===== SECTION TITLE ===== */
-
-.section-title{
-  margin-top:21px;
-  margin-bottom:10px;
-  font-size:17px;
-  font-weight:900;
+@keyframes pulse{
+  50%{opacity:.55}
 }
 
-/* ===== PLAN ===== */
-
-.plan-grid{
+/* PLAN */
+.plans{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:11px;
+  gap:12px;
 }
 
 .plan{
-  position:relative;
-  padding:16px 10px;
+  border:2px solid #d7e5dc;
+  border-radius:15px;
+  padding:15px;
   text-align:center;
-  border:2px solid #e1e5e8;
-  border-radius:17px;
   cursor:pointer;
-  transition:.3s;
-  background:#fff;
+  background:white;
+  transition:.25s;
 }
 
 .plan:hover{
   transform:translateY(-3px);
 }
 
-.plan.active{
-  border-color:#dda400;
-  background:#fff9e7;
-  box-shadow:0 7px 20px rgba(218,157,0,.15);
+.plan.selected{
+  border-color:#08763f;
+  background:#eafff2;
+  box-shadow:0 4px 15px rgba(0,100,50,.15);
 }
 
-.plan.active:after{
-  content:"✓";
-  position:absolute;
-  top:6px;
-  right:9px;
-  color:#d39400;
-  font-weight:900;
+.plan strong{
+  display:block;
+  font-size:20px;
+  color:#075c35;
 }
 
-.plan-title{
-  font-size:17px;
-  font-weight:900;
+.plan span{
+  display:block;
+  font-size:25px;
+  font-weight:bold;
+  margin-top:7px;
 }
 
-.plan-price{
-  margin-top:5px;
-  font-size:24px;
-  color:#d39400;
-  font-weight:900;
-}
-
-.plan-small{
-  margin-top:4px;
-  color:#777;
-  font-size:11px;
-}
-
-/* ===== QUANTITY ===== */
-
+/* QUANTITY */
 .quantity{
   display:flex;
   justify-content:center;
   align-items:center;
-  gap:17px;
-  margin-top:12px;
+  gap:18px;
+  margin:15px 0;
 }
 
-.qbtn{
-  width:43px;
-  height:43px;
+.quantity button{
+  width:42px;
+  height:42px;
   border:0;
   border-radius:50%;
-  background:#111b25;
+  background:#08763f;
   color:white;
-  font-size:24px;
+  font-size:25px;
   cursor:pointer;
-  transition:.2s;
 }
 
-.qbtn:active{
-  transform:scale(.85);
-}
-
-.qnumber{
-  min-width:35px;
+.quantity span{
+  font-size:24px;
+  font-weight:bold;
+  min-width:30px;
   text-align:center;
-  font-size:22px;
-  font-weight:900;
 }
-
-/* ===== TOTAL ===== */
 
 .total{
-  margin-top:15px;
-  padding:15px;
   text-align:center;
-  border-radius:15px;
-  background:#07140d;
-  color:white;
+  background:#e9fff1;
+  padding:13px;
+  border-radius:12px;
+  font-size:22px;
+  font-weight:bold;
+  color:#075c35;
 }
 
-.total-label{
-  font-size:12px;
-  opacity:.75;
-}
-
-.total-price{
-  margin-top:3px;
-  color:#ffd65a;
-  font-size:31px;
-  font-weight:900;
-}
-
-/* ===== BUTTON ===== */
-
-.order-btn{
-  width:100%;
-  margin-top:17px;
-  padding:16px;
-  border:0;
-  border-radius:15px;
-  background:linear-gradient(135deg,#e5a500,#ffd344);
-  color:#151515;
-  font-size:18px;
-  font-weight:900;
-  cursor:pointer;
-  box-shadow:0 8px 25px rgba(211,151,0,.28);
-  animation:buttonGlow 2.5s infinite;
-  transition:.25s;
-}
-
-.order-btn:hover{
-  transform:translateY(-2px);
-}
-
-.order-btn:active{
-  transform:scale(.98);
-}
-
-/* ===== FEATURES ===== */
-
+/* FEATURES */
 .features{
   display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:9px;
-  margin-top:16px;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
 }
 
 .feature{
-  padding:13px 9px;
+  padding:13px;
+  border-radius:12px;
+  background:#f0f8f3;
+}
+
+h2{
+  color:#075c35;
   text-align:center;
-  border-radius:13px;
-  background:#f5f7f8;
-  font-size:12px;
-  font-weight:bold;
 }
 
-/* ===== FORM ===== */
-
-.form-card{
-  margin-top:17px;
-  padding:21px 17px;
-  background:white;
-  border-radius:23px;
-  box-shadow:0 10px 32px rgba(0,0,0,.09);
-}
-
-.form-card h2{
-  font-size:22px;
-}
-
-.form-sub{
-  margin-top:5px;
-  color:#727c84;
-  font-size:13px;
-}
-
+/* FORM */
 label{
   display:block;
-  margin-top:14px;
+  margin-top:13px;
   margin-bottom:6px;
-  font-size:13px;
   font-weight:bold;
 }
 
-input[type="text"],
-input[type="tel"],
-input[type="file"],
-textarea{
+input,
+textarea,
+select{
   width:100%;
   padding:13px;
-  border:1px solid #d8dee3;
-  border-radius:12px;
-  background:#fafbfc;
+  border:1px solid #ccd8d0;
+  border-radius:10px;
+  font-size:16px;
   outline:none;
-  font-size:14px;
-  transition:.25s;
 }
 
 input:focus,
 textarea:focus{
-  border-color:#dba300;
-  background:white;
-  box-shadow:0 0 0 3px rgba(219,163,0,.10);
+  border-color:#08763f;
 }
 
 textarea{
@@ -497,62 +326,634 @@ textarea{
   resize:vertical;
 }
 
-/* ===== MEDICINE ===== */
-
-.info-box{
-  margin-top:16px;
-  padding:14px;
-  border-radius:14px;
-  background:#f6f8f9;
-}
-
-.check{
+.checkbox{
   display:flex;
   align-items:center;
-  gap:9px;
-  margin-top:9px;
-  font-size:13px;
-}
-
-.check input{
-  width:17px;
-  height:17px;
-  accent-color:#d99d00;
-}
-
-/* ===== SUMMARY ===== */
-
-.summary{
-  margin-top:15px;
+  gap:8px;
+  background:#f2faf5;
   padding:12px;
-  border-radius:12px;
-  background:#fff8df;
-  font-size:13px;
-  font-weight:bold;
-  line-height:1.7;
+  border-radius:10px;
+  margin-top:8px;
 }
 
-/* ===== PHOTO ===== */
+.checkbox input{
+  width:auto;
+}
 
-.preview{
-  display:none;
-  margin-top:11px;
+.photo-preview{
+  margin-top:10px;
   text-align:center;
 }
 
-.preview img{
-  max-width:100%;
-  max-height:230px;
-  border-radius:15px;
-  box-shadow:0 5px 20px rgba(0,0,0,.13);
-  animation:photoPop .4s ease;
+.photo-preview img{
+  max-width:220px;
+  max-height:220px;
+  border-radius:12px;
+  display:none;
+  margin:auto;
+  box-shadow:0 4px 15px rgba(0,0,0,.15);
 }
 
 .remove-photo{
-  margin-top:8px;
+  display:none;
+  margin:8px auto;
   border:0;
-  padding:7px 12px;
-  border-radius:9px;
-  background:#eee;
+  background:#d92b2b;
+  color:white;
+  padding:8px 15px;
+  border-radius:8px;
   cursor:pointer;
-  font-size:12px
+}
+
+.order-btn{
+  width:100%;
+  border:0;
+  background:linear-gradient(135deg,#08763f,#04a857);
+  color:white;
+  padding:16px;
+  border-radius:13px;
+  font-size:21px;
+  font-weight:bold;
+  cursor:pointer;
+  margin-top:20px;
+  box-shadow:0 5px 15px rgba(0,100,50,.25);
+  animation:orderPulse 2s infinite;
+}
+
+@keyframes orderPulse{
+  0%,100%{transform:scale(1)}
+  50%{transform:scale(1.025)}
+}
+
+.order-btn:active{
+  transform:scale(.97);
+}
+
+.faq{
+  border-bottom:1px solid #ddd;
+  padding:13px 0;
+  cursor:pointer;
+}
+
+.answer{
+  display:none;
+  padding:8px 0;
+  color:#555;
+}
+
+.bottom-order{
+  position:fixed;
+  bottom:12px;
+  left:12px;
+  right:12px;
+  z-index:20;
+}
+
+.bottom-order a{
+  display:block;
+  text-align:center;
+  background:#08763f;
+  color:white;
+  text-decoration:none;
+  padding:13px;
+  border-radius:30px;
+  font-weight:bold;
+  box-shadow:0 5px 18px rgba(0,0,0,.25);
+}
+
+.footer{
+  text-align:center;
+  padding:70px 15px 35px;
+  color:#777;
+  font-size:13px;
+}
+
+@media(max-width:600px){
+
+  .header h1{
+    font-size:25px;
+  }
+
+  .slider img{
+    height:300px;
+  }
+
+  .plans,
+  .features{
+    grid-template-columns:1fr;
+  }
+
+  .price{
+    font-size:30px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+  <h1>💪 MAX POWER</h1>
+  <p>For Men • Ayurvedic Medicine</p>
+
+  <div class="like-box">
+    <button class="like-btn" onclick="likePage()">
+      ❤️ Like <span id="likeCount">0</span>
+    </button>
+  </div>
+</header>
+
+<div class="container">
+
+<!-- PHOTO SLIDER -->
+<div class="card">
+
+  <div class="slider">
+
+    <img class="active" src="https://i.ibb.co/FqVQ08q6/IMG-20260914-234258-638.jpg">
+    <img src="https://i.ibb.co/DBXvn6z/IMG-20260914-234258-695.jpg">
+    <img src="https://i.ibb.co/G4vXrDrk/IMG-20260914-234258-636.jpg">
+    <img src="https://i.ibb.co/9332Y1kp/IMG-20260914-234258-333.jpg">
+    <img src="https://i.ibb.co/S4VmNLSF/IMG-20260914-234258-520.jpg">
+    <img src="https://i.ibb.co/M5SMtH1Q/IMG-20260914-234259-203.jpg">
+    <img src="https://i.ibb.co/W4Dwkk2Q/IMG-20260914-234259-264.jpg">
+    <img src="https://i.ibb.co/k2j0p665/IMG-20260914-234258-899.jpg">
+    <img src="https://i.ibb.co/JwrpcFJz/IMG-20260914-234258-534.jpg">
+
+    <button class="arrow prev" onclick="changeSlide(-1)">‹</button>
+    <button class="arrow next" onclick="changeSlide(1)">›</button>
+
+  </div>
+
+  <div class="dots" id="dots"></div>
+
+</div>
+
+<!-- PRODUCT -->
+<div class="card">
+
+  <h2 class="product-title">MAX POWER FOR MEN</h2>
+
+  <div class="old-price">পুরোনো মূল্য: ₹২,২০০</div>
+
+  <div class="price" id="mainPrice">₹১,৫০০</div>
+
+  <div class="offer">
+    🔥 বিশেষ অফার চলছে!
+  </div>
+
+  <p style="text-align:center">
+    📦 500 mg • 30 Capsules
+  </p>
+
+</div>
+
+<!-- PLAN -->
+<div class="card">
+
+  <h2>📦 আপনার প্যাকেজ নির্বাচন করুন</h2>
+
+  <div class="plans">
+
+    <div class="plan selected" id="plan1" onclick="selectPlan(1)">
+      <strong>১ মাসের প্যাক</strong>
+      <span>₹১,৫০০</span>
+    </div>
+
+    <div class="plan" id="plan2" onclick="selectPlan(2)">
+      <strong>২ মাসের প্যাক</strong>
+      <span>₹৩,০০০</span>
+    </div>
+
+  </div>
+
+  <h3 style="text-align:center">🔢 পরিমাণ</h3>
+
+  <div class="quantity">
+
+    <button type="button" onclick="changeQty(-1)">−</button>
+
+    <span id="qty">1</span>
+
+    <button type="button" onclick="changeQty(1)">+</button>
+
+  </div>
+
+  <div class="total">
+    মোট মূল্য: ₹<span id="total">1500</span>
+  </div>
+
+</div>
+
+<!-- FEATURES -->
+<div class="card">
+
+  <h2>✨ পণ্যের বৈশিষ্ট্য</h2>
+
+  <div class="features">
+
+    <div class="feature">🌿 Ayurvedic Medicine</div>
+    <div class="feature">💊 500 mg Capsules</div>
+    <div class="feature">📦 30 Capsules</div>
+    <div class="feature">🛍️ সহজ অর্ডার ব্যবস্থা</div>
+
+  </div>
+
+</div>
+
+<!-- ORDER FORM -->
+<div class="card" id="order">
+
+  <h2>🛒 অর্ডার করতে নিচের ফর্ম পূরণ করুন</h2>
+
+  <form
+    action="https://formsubmit.co/maxpower9999000@gmail.com"
+    method="POST"
+    enctype="multipart/form-data"
+    onsubmit="prepareSubmit()"
+  >
+
+    <input type="hidden" name="_subject" value="🛒 Max Power - নতুন অর্ডার">
+
+    <input type="hidden" name="_template" value="table">
+
+    <input
+      type="hidden"
+      name="_next"
+      value="https://medicinec.github.io/max-power/"
+    >
+
+    <input type="hidden" name="প্যাকেজ" id="hiddenPlan" value="১ মাস">
+
+    <input type="hidden" name="প্রতি প্যাক মূল্য" id="hiddenUnitPrice" value="1500">
+
+    <input type="hidden" name="পরিমাণ" id="hiddenQty" value="1">
+
+    <input type="hidden" name="মোট মূল্য" id="hiddenTotal" value="1500">
+
+    <label>👤 আপনার নাম</label>
+
+    <input
+      type="text"
+      name="নাম"
+      placeholder="আপনার পুরো নাম লিখুন"
+      required
+    >
+
+    <label>📱 মোবাইল নম্বর</label>
+
+    <input
+      type="tel"
+      name="মোবাইল"
+      placeholder="১০ সংখ্যার মোবাইল নম্বর"
+      inputmode="numeric"
+      maxlength="10"
+      required
+    >
+
+    <label>🏠 সম্পূর্ণ ঠিকানা</label>
+
+    <textarea
+      name="ঠিকানা"
+      placeholder="বাড়ি/গ্রাম, পোস্ট, থানা, জেলা লিখুন"
+      required
+    ></textarea>
+
+    <label>📮 PIN Code</label>
+
+    <input
+      type="text"
+      name="পিন কোড"
+      placeholder="৬ সংখ্যার PIN Code"
+      inputmode="numeric"
+      maxlength="6"
+      pattern="[0-9]{6}"
+      required
+    >
+
+    <label>💊 মেডিসিন</label>
+
+    <div class="checkbox">
+      <input
+        type="checkbox"
+        name="মেডিসিন"
+        value="MAX POWER"
+        checked
+      >
+      <span>MAX POWER</span>
+    </div>
+
+    <label>📷 চাইলে মেডিসিনের ছবি আপলোড করুন</label>
+
+    <input
+      type="file"
+      name="মেডিসিনের ছবি"
+      id="photoInput"
+      accept="image/*"
+      onchange="previewPhoto(event)"
+    >
+
+    <div class="photo-preview">
+
+      <img id="preview">
+
+      <button
+        type="button"
+        id="removePhoto"
+        class="remove-photo"
+        onclick="removePhoto()"
+      >
+        ❌ ছবি পরিবর্তন করুন
+      </button>
+
+    </div>
+
+    <label>📝 অতিরিক্ত তথ্য (ঐচ্ছিক)</label>
+
+    <textarea
+      name="অতিরিক্ত তথ্য"
+      placeholder="প্রয়োজন হলে কিছু লিখুন..."
+    ></textarea>
+
+    <button class="order-btn" type="submit">
+      🛒 এখনই অর্ডার করুন ➜
+    </button>
+
+  </form>
+
+</div>
+
+<!-- FAQ -->
+<div class="card">
+
+  <h2>❓ সাধারণ প্রশ্ন</h2>
+
+  <div class="faq" onclick="toggleFaq(this)">
+    <b>➜ কীভাবে অর্ডার করব?</b>
+    <div class="answer">
+      উপরের ফর্মে আপনার নাম, মোবাইল, ঠিকানা ও PIN Code দিয়ে অর্ডার করুন।
+    </div>
+  </div>
+
+  <div class="faq" onclick="toggleFaq(this)">
+    <b>➜ ১ মাসের প্যাকের দাম কত?</b>
+    <div class="answer">
+      ১ মাসের প্যাকের মূল্য ₹১,৫০০।
+    </div>
+  </div>
+
+  <div class="faq" onclick="toggleFaq(this)">
+    <b>➜ ২ মাসের প্যাকের দাম কত?</b>
+    <div class="answer">
+      ২ মাসের প্যাকের মূল্য ₹৩,০০০।
+    </div>
+  </div>
+
+  <div class="faq" onclick="toggleFaq(this)">
+    <b>➜ অর্ডার কোথায় যাবে?</b>
+    <div class="answer">
+      আপনার দেওয়া তথ্য অর্ডার হিসেবে ইমেইলে পাঠানো হবে।
+    </div>
+  </div>
+
+</div>
+
+</div>
+
+<div class="bottom-order">
+  <a href="#order">🛒 অর্ডার করতে এখানে ক্লিক করুন ➜</a>
+</div>
+
+<div class="footer">
+  © 2026 MAX POWER • All Rights Reserved
+</div>
+
+<script>
+
+/* LIKE */
+let likes = localStorage.getItem("maxPowerLikes") || 0;
+
+document.getElementById("likeCount").innerText = likes;
+
+function likePage(){
+
+  likes++;
+
+  localStorage.setItem("maxPowerLikes",likes);
+
+  document.getElementById("likeCount").innerText = likes;
+
+}
+
+
+/* SLIDER */
+let currentSlide = 0;
+
+const slides = document.querySelectorAll(".slider img");
+
+const dotsBox = document.getElementById("dots");
+
+slides.forEach((img,index)=>{
+
+  const dot = document.createElement("span");
+
+  dot.className = "dot" + (index === 0 ? " active" : "");
+
+  dot.onclick = function(){
+    showSlide(index);
+  };
+
+  dotsBox.appendChild(dot);
+
+});
+
+const dots = document.querySelectorAll(".dot");
+
+function showSlide(index){
+
+  slides[currentSlide].classList.remove("active");
+  dots[currentSlide].classList.remove("active");
+
+  currentSlide = (index + slides.length) % slides.length;
+
+  slides[currentSlide].classList.add("active");
+  dots[currentSlide].classList.add("active");
+
+}
+
+function changeSlide(direction){
+
+  showSlide(currentSlide + direction);
+
+}
+
+setInterval(function(){
+
+  changeSlide(1);
+
+},4000);
+
+
+/* PLAN + PRICE */
+
+let selectedPlan = 1;
+
+let unitPrice = 1500;
+
+let quantity = 1;
+
+function selectPlan(plan){
+
+  selectedPlan = plan;
+
+  if(plan === 1){
+    unitPrice = 1500;
+  }else{
+    unitPrice = 3000;
+  }
+
+  document.getElementById("plan1").classList.toggle(
+    "selected",
+    plan === 1
+  );
+
+  document.getElementById("plan2").classList.toggle(
+    "selected",
+    plan === 2
+  );
+
+  updatePrice();
+
+}
+
+
+/* QUANTITY */
+
+function changeQty(change){
+
+  quantity += change;
+
+  if(quantity < 1){
+    quantity = 1;
+  }
+
+  if(quantity > 4){
+    quantity = 4;
+  }
+
+  updatePrice();
+
+}
+
+
+/* UPDATE PRICE */
+
+function updatePrice(){
+
+  const total = unitPrice * quantity;
+
+  document.getElementById("qty").innerText = quantity;
+
+  document.getElementById("total").innerText = total;
+
+  document.getElementById("mainPrice").innerText =
+    "₹" + unitPrice.toLocaleString("en-IN");
+
+  document.getElementById("hiddenPlan").value =
+    selectedPlan === 1 ? "১ মাস" : "২ মাস";
+
+  document.getElementById("hiddenUnitPrice").value =
+    unitPrice;
+
+  document.getElementById("hiddenQty").value =
+    quantity;
+
+  document.getElementById("hiddenTotal").value =
+    total;
+
+}
+
+
+/* PHOTO PREVIEW */
+
+function previewPhoto(event){
+
+  const file = event.target.files[0];
+
+  const preview = document.getElementById("preview");
+
+  const removeBtn = document.getElementById("removePhoto");
+
+  if(file){
+
+    preview.src = URL.createObjectURL(file);
+
+    preview.style.display = "block";
+
+    removeBtn.style.display = "block";
+
+  }
+
+}
+
+
+/* PHOTO REMOVE BEFORE SUBMIT */
+
+function removePhoto(){
+
+  const input = document.getElementById("photoInput");
+
+  const preview = document.getElementById("preview");
+
+  const removeBtn = document.getElementById("removePhoto");
+
+  input.value = "";
+
+  preview.src = "";
+
+  preview.style.display = "none";
+
+  removeBtn.style.display = "none";
+
+}
+
+
+/* AFTER SUBMIT */
+
+function prepareSubmit(){
+
+  /*
+    Submit করার সময় ছবি পরিবর্তনের বাটনটি
+    আর দেখানো হবে না।
+  */
+
+  document.getElementById("removePhoto").style.display = "none";
+
+  updatePrice();
+
+}
+
+
+/* FAQ */
+
+function toggleFaq(element){
+
+  const answer = element.querySelector(".answer");
+
+  if(answer.style.display === "block"){
+    answer.style.display = "none";
+  }else{
+    answer.style.display = "block";
+  }
+
+}
+
+
+/* INITIAL PRICE */
+
+updatePrice();
+
+</script>
+
+</body>
+</html>
