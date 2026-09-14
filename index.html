@@ -3,13 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>MAX POWER - Order Now</title>
+<meta name="theme-color" content="#07111f">
+<title>MAX POWER — বিশেষ অফার</title>
 
 <style>
-
 *{
   box-sizing:border-box;
+  margin:0;
+  padding:0;
 }
 
 html{
@@ -17,253 +18,391 @@ html{
 }
 
 body{
-  margin:0;
   font-family:Arial,"Noto Sans Bengali",sans-serif;
-  background:#f5f5f5;
-  color:#222;
-  padding-bottom:65px;
+  background:linear-gradient(180deg,#06101d,#0b1726 45%,#f5f7fa 45%);
+  color:#18212b;
+  overflow-x:hidden;
 }
 
-/* HEADER */
-
+/* ---------- TOP HEADER ---------- */
 .header{
-  background:linear-gradient(135deg,#111,#333);
-  color:white;
+  position:relative;
+  padding:22px 15px 28px;
   text-align:center;
-  padding:18px 10px;
-  font-size:28px;
-  font-weight:bold;
-  animation:headerGlow 3s ease-in-out infinite;
+  color:#fff;
+  background:
+    radial-gradient(circle at 50% 0%,rgba(255,193,7,.20),transparent 35%),
+    linear-gradient(135deg,#020812,#0c1d31,#06101d);
+  overflow:hidden;
 }
 
-@keyframes headerGlow{
-  0%,100%{
-    text-shadow:0 0 3px rgba(255,255,255,.2);
-  }
-  50%{
-    text-shadow:0 0 14px rgba(255,255,255,.65);
-  }
+.header:before{
+  content:"";
+  position:absolute;
+  width:180px;
+  height:180px;
+  border-radius:50%;
+  background:rgba(255,193,7,.08);
+  filter:blur(10px);
+  top:-90px;
+  left:-50px;
+  animation:floatGlow 5s ease-in-out infinite;
 }
 
+.header:after{
+  content:"";
+  position:absolute;
+  width:160px;
+  height:160px;
+  border-radius:50%;
+  background:rgba(0,220,255,.07);
+  filter:blur(15px);
+  right:-60px;
+  bottom:-70px;
+  animation:floatGlow 6s ease-in-out infinite reverse;
+}
 
-/* LIKE */
+.logo{
+  position:relative;
+  z-index:2;
+  font-size:31px;
+  font-weight:900;
+  letter-spacing:2px;
+  text-shadow:0 0 18px rgba(255,193,7,.35);
+}
 
-.like-box{
-  background:white;
-  text-align:center;
-  padding:14px 10px;
-  box-shadow:0 2px 8px rgba(0,0,0,.12);
+.subtitle{
+  position:relative;
+  z-index:2;
+  margin-top:7px;
+  font-size:14px;
+  opacity:.85;
+}
+
+/* ---------- LIKE ---------- */
+.like-wrap{
+  position:relative;
+  z-index:3;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  margin-top:17px;
+  padding:7px 12px;
+  border:1px solid rgba(255,255,255,.18);
+  border-radius:30px;
+  background:rgba(255,255,255,.07);
+  backdrop-filter:blur(10px);
 }
 
 .like-btn{
   border:0;
-  background:#1877f2;
-  color:white;
-  font-size:18px;
+  color:#fff;
+  background:transparent;
+  font-size:14px;
   font-weight:bold;
-  padding:10px 22px;
-  border-radius:25px;
+  cursor:pointer;
+  padding:5px 8px;
+}
+
+.like-count{
+  min-width:25px;
+  font-weight:bold;
+}
+
+.like-btn.pop{
+  animation:likePop .4s ease;
+}
+
+/* ---------- MAIN ---------- */
+.container{
+  width:min(94%,720px);
+  margin:-1px auto 90px;
+}
+
+/* ---------- SLIDER ---------- */
+.slider-card{
+  position:relative;
+  margin-top:18px;
+  background:#fff;
+  border-radius:24px;
+  padding:10px;
+  box-shadow:0 15px 45px rgba(0,0,0,.18);
+  overflow:hidden;
+  animation:fadeUp .7s ease both;
+}
+
+.slider{
+  position:relative;
+  height:390px;
+  border-radius:18px;
+  overflow:hidden;
+  background:#f3f5f7;
+}
+
+.slide{
+  display:none;
+  width:100%;
+  height:100%;
+}
+
+.slide.active{
+  display:block;
+  animation:slideIn .65s ease;
+}
+
+.slide img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  display:block;
+}
+
+.arrow{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  width:44px;
+  height:44px;
+  border:0;
+  border-radius:50%;
+  background:rgba(0,0,0,.55);
+  color:#fff;
+  font-size:27px;
+  cursor:pointer;
+  z-index:5;
+  backdrop-filter:blur(6px);
+  transition:.25s;
+}
+
+.arrow:hover{
+  transform:translateY(-50%) scale(1.1);
+  background:rgba(0,0,0,.75);
+}
+
+.prev{left:12px}
+.next{right:12px}
+
+.dots{
+  position:absolute;
+  bottom:12px;
+  left:50%;
+  transform:translateX(-50%);
+  display:flex;
+  gap:6px;
+  z-index:5;
+}
+
+.dot{
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:rgba(0,0,0,.25);
+  transition:.25s;
+}
+
+.dot.active{
+  width:21px;
+  border-radius:10px;
+  background:#111;
+}
+
+/* ---------- PRODUCT CARD ---------- */
+.product-card{
+  margin-top:18px;
+  padding:25px 20px;
+  background:#fff;
+  border-radius:24px;
+  box-shadow:0 12px 40px rgba(0,0,0,.10);
+  animation:fadeUp .8s ease both;
+}
+
+.badge{
+  display:inline-block;
+  padding:7px 12px;
+  border-radius:20px;
+  background:#fff3cd;
+  color:#7a5200;
+  font-size:12px;
+  font-weight:bold;
+}
+
+.product-title{
+  margin-top:12px;
+  font-size:28px;
+  font-weight:900;
+  color:#101820;
+}
+
+.description{
+  margin-top:9px;
+  color:#66717d;
+  line-height:1.6;
+  font-size:14px;
+}
+
+/* ---------- PRICE ---------- */
+.price-box{
+  margin:20px 0;
+  padding:18px;
+  border-radius:18px;
+  text-align:center;
+  background:linear-gradient(135deg,#fff9e6,#fff);
+  border:1px solid #f3df9b;
+}
+
+.old-price{
+  font-size:18px;
+  color:#89919a;
+  text-decoration:line-through;
+}
+
+.price{
+  margin-top:3px;
+  font-size:39px;
+  font-weight:900;
+  color:#d99a00;
+  animation:pricePulse 2.2s ease-in-out infinite;
+}
+
+.offer{
+  margin-top:7px;
+  font-weight:bold;
+  color:#0d7a45;
+  animation:softPulse 2s ease-in-out infinite;
+}
+
+/* ---------- PLAN ---------- */
+.section-title{
+  margin:25px 0 12px;
+  font-size:18px;
+  font-weight:900;
+}
+
+.plan-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+
+.plan{
+  position:relative;
+  padding:18px 12px;
+  text-align:center;
+  border:2px solid #e1e5e9;
+  border-radius:18px;
+  background:#fff;
+  cursor:pointer;
+  transition:.3s;
+  overflow:hidden;
+}
+
+.plan:hover{
+  transform:translateY(-3px);
+}
+
+.plan.selected{
+  border-color:#e0a400;
+  background:linear-gradient(145deg,#fff9e7,#fff);
+  box-shadow:0 8px 25px rgba(218,157,0,.15);
+}
+
+.plan.selected:after{
+  content:"✓";
+  position:absolute;
+  top:7px;
+  right:10px;
+  font-weight:900;
+  color:#d99a00;
+}
+
+.plan-name{
+  font-size:17px;
+  font-weight:900;
+}
+
+.plan-price{
+  margin-top:7px;
+  font-size:25px;
+  font-weight:900;
+  color:#d09200;
+}
+
+.plan-note{
+  margin-top:5px;
+  font-size:11px;
+  color:#727b84;
+}
+
+/* ---------- QUANTITY ---------- */
+.quantity{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:16px;
+  margin:15px 0;
+}
+
+.qbtn{
+  width:43px;
+  height:43px;
+  border:0;
+  border-radius:50%;
+  background:#111b27;
+  color:#fff;
+  font-size:23px;
   cursor:pointer;
   transition:.2s;
 }
 
-.like-btn:hover{
-  transform:translateY(-2px);
+.qbtn:active{
+  transform:scale(.88);
 }
 
-.like-btn:active{
-  transform:scale(.92);
-}
-
-.like-count{
-  margin-top:7px;
-  font-size:16px;
-  font-weight:bold;
-}
-
-
-/* MAIN */
-
-.container{
-  max-width:700px;
-  margin:auto;
-  padding:12px;
-}
-
-
-/* SLIDER */
-
-.slider{
-  width:100%;
-  overflow:hidden;
-  border-radius:15px;
-  background:white;
-  box-shadow:0 3px 12px rgba(0,0,0,.15);
-  animation:cardIn .8s ease;
-}
-
-.slides{
-  display:flex;
-  width:900%;
-  animation:slide 27s infinite;
-}
-
-.slides img{
-  width:11.111%;
-  height:330px;
-  object-fit:cover;
-  display:block;
-  transition:transform .5s;
-}
-
-@keyframes slide{
-
-  0%,8%{
-    transform:translateX(0);
-  }
-
-  11%,19%{
-    transform:translateX(-11.111%);
-  }
-
-  22%,30%{
-    transform:translateX(-22.222%);
-  }
-
-  33%,41%{
-    transform:translateX(-33.333%);
-  }
-
-  44%,52%{
-    transform:translateX(-44.444%);
-  }
-
-  55%,63%{
-    transform:translateX(-55.555%);
-  }
-
-  66%,74%{
-    transform:translateX(-66.666%);
-  }
-
-  77%,85%{
-    transform:translateX(-77.777%);
-  }
-
-  88%,100%{
-    transform:translateX(-88.888%);
-  }
-
-}
-
-
-/* CARD */
-
-.card{
-  background:white;
-  margin-top:15px;
-  padding:18px;
-  border-radius:15px;
-  box-shadow:0 3px 12px rgba(0,0,0,.1);
-  opacity:0;
-  transform:translateY(20px);
-  animation:cardIn .7s ease forwards;
-}
-
-@keyframes cardIn{
-
-  to{
-    opacity:1;
-    transform:translateY(0);
-  }
-
-}
-
-
-.title{
-  font-size:25px;
-  font-weight:bold;
+.qnumber{
+  min-width:45px;
   text-align:center;
+  font-size:22px;
+  font-weight:900;
 }
 
-
-/* PRICE */
-
-.old-price{
+/* ---------- TOTAL ---------- */
+.total-box{
+  margin-top:16px;
+  padding:16px;
+  border-radius:17px;
   text-align:center;
-  color:#777;
-  font-size:21px;
-  text-decoration:line-through;
-  margin-top:10px;
+  background:#07111f;
+  color:#fff;
+  box-shadow:0 8px 25px rgba(0,0,0,.15);
 }
 
-.price{
-  text-align:center;
-  color:#e60000;
-  font-size:35px;
-  font-weight:bold;
-  animation:pricePulse 2.2s ease-in-out infinite;
+.total-label{
+  font-size:12px;
+  opacity:.75;
 }
 
-@keyframes pricePulse{
-
-  0%,100%{
-    transform:scale(1);
-  }
-
-  50%{
-    transform:scale(1.04);
-  }
-
+.total-price{
+  margin-top:3px;
+  font-size:31px;
+  font-weight:900;
+  color:#ffd45c;
 }
 
-
-/* OFFER */
-
-.save{
-  text-align:center;
-  color:#168000;
-  font-weight:bold;
-  font-size:18px;
-  margin-top:5px;
-}
-
-.save span{
-  display:inline-block;
-  animation:offerPulse 1.8s ease-in-out infinite;
-}
-
-@keyframes offerPulse{
-
-  0%,100%{
-    transform:scale(1);
-  }
-
-  50%{
-    transform:scale(1.07);
-  }
-
-}
-
-
-/* ORDER BUTTON */
-
+/* ---------- BUTTON ---------- */
 .order-btn{
-  display:block;
   width:100%;
-  background:#e60000;
-  color:white;
-  text-align:center;
-  padding:15px;
-  margin-top:15px;
-  border-radius:10px;
-  text-decoration:none;
-  font-size:21px;
-  font-weight:bold;
+  margin-top:20px;
+  padding:17px;
   border:0;
+  border-radius:16px;
+  background:linear-gradient(135deg,#e8aa00,#ffc928);
+  color:#151515;
+  font-size:18px;
+  font-weight:900;
   cursor:pointer;
+  box-shadow:0 9px 25px rgba(219,158,0,.28);
   transition:.25s;
-  animation:orderPulse 2.5s ease-in-out infinite;
+  animation:buttonGlow 2.5s ease-in-out infinite;
 }
 
 .order-btn:hover{
@@ -271,71 +410,74 @@ body{
 }
 
 .order-btn:active{
-  transform:scale(.96);
+  transform:scale(.98);
 }
 
-@keyframes orderPulse{
-
-  0%,100%{
-    box-shadow:0 0 0 rgba(230,0,0,0);
-  }
-
-  50%{
-    box-shadow:0 0 14px rgba(230,0,0,.35);
-  }
-
-}
-
-
-/* FEATURES */
-
+/* ---------- FEATURES ---------- */
 .features{
   display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:8px;
-  margin-top:15px;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  margin-top:18px;
 }
 
 .feature{
-  background:#fafafa;
-  padding:12px 5px;
-  text-align:center;
-  border-radius:10px;
-  font-size:14px;
-  transition:.25s;
-}
-
-.feature:hover{
-  transform:translateY(-3px);
-}
-
-
-/* FORM */
-
-label{
-  display:block;
+  padding:14px 10px;
+  border-radius:14px;
+  background:#f6f8fa;
+  font-size:13px;
   font-weight:bold;
-  margin-top:14px;
+  animation:fadeUp .7s ease both;
+}
+
+/* ---------- FORM ---------- */
+.form-card{
+  margin-top:18px;
+  padding:22px 18px;
+  background:#fff;
+  border-radius:24px;
+  box-shadow:0 12px 40px rgba(0,0,0,.10);
+}
+
+.form-card h2{
+  font-size:23px;
   margin-bottom:6px;
 }
 
-input,
+.form-sub{
+  color:#707983;
+  font-size:13px;
+  margin-bottom:18px;
+}
+
+label{
+  display:block;
+  margin:14px 0 7px;
+  font-size:13px;
+  font-weight:bold;
+}
+
+input[type="text"],
+input[type="tel"],
+input[type="file"],
 textarea,
 select{
   width:100%;
   padding:13px;
-  border:1px solid #ccc;
-  border-radius:8px;
-  font-size:16px;
+  border:1px solid #d9dfe4;
+  border-radius:12px;
   outline:none;
+  font-size:14px;
+  background:#fafbfc;
   transition:.25s;
 }
 
 input:focus,
 textarea:focus,
 select:focus{
-  border-color:#1877f2;
-  box-shadow:0 0 0 3px rgba(24,119,242,.1);
+  border-color:#dca500;
+  box-shadow:0 0 0 3px rgba(220,165,0,.10);
+  background:#fff;
 }
 
 textarea{
@@ -343,924 +485,543 @@ textarea{
   resize:vertical;
 }
 
-
-/* PROBLEMS */
-
-.problem-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:7px;
-}
-
-.problem{
-  background:#f7f7f7;
-  padding:8px;
-  border-radius:7px;
-  font-size:13px;
-  transition:.2s;
-}
-
-.problem:hover{
-  background:#eeeeee;
-  transform:translateY(-1px);
-}
-
-.problem input{
-  width:auto;
-  margin-right:4px;
-}
-
-
-/* PHOTO */
-
-.photo-box{
+.problem-box{
   margin-top:18px;
   padding:15px;
-  background:#f7f7f7;
-  border:2px dashed #bbb;
-  border-radius:12px;
+  border-radius:15px;
+  background:#f7f8fa;
 }
 
-.photo-title{
-  font-size:18px;
-  font-weight:bold;
-  margin-bottom:10px;
+.check{
+  display:flex;
+  align-items:center;
+  gap:9px;
+  margin:10px 0;
+  font-size:13px;
 }
 
-.photo-help{
-  display:block;
-  margin-top:8px;
-  color:#666;
-  line-height:1.5;
+.check input{
+  width:17px;
+  height:17px;
+  accent-color:#d89e00;
 }
 
-#photoPreview{
-  display:none;
+.selected-summary{
   margin-top:15px;
+  padding:12px;
+  border-radius:12px;
+  background:#fff8df;
+  font-size:13px;
+  font-weight:bold;
+}
+
+/* ---------- PHOTO ---------- */
+.photo-preview{
+  display:none;
+  margin-top:12px;
+  position:relative;
   text-align:center;
-  animation:photoIn .45s ease;
 }
 
-@keyframes photoIn{
-
-  from{
-    opacity:0;
-    transform:scale(.9);
-  }
-
-  to{
-    opacity:1;
-    transform:scale(1);
-  }
-
-}
-
-#previewImage{
+.photo-preview img{
   max-width:100%;
-  max-height:300px;
-  border-radius:10px;
-  box-shadow:0 2px 8px rgba(0,0,0,.2);
+  max-height:230px;
+  border-radius:15px;
+  object-fit:contain;
+  box-shadow:0 5px 20px rgba(0,0,0,.12);
+  animation:photoPop .45s ease;
 }
 
 .remove-photo{
   display:block;
-  margin:10px auto 0;
-  background:#555;
-  color:white;
+  margin:9px auto 0;
   border:0;
-  padding:9px 18px;
-  border-radius:7px;
+  background:#eee;
+  padding:7px 12px;
+  border-radius:10px;
+  cursor:pointer;
+  font-size:12px;
+}
+
+/* ---------- FAQ ---------- */
+.faq{
+  margin-top:18px;
+  padding:20px 18px;
+  background:#fff;
+  border-radius:24px;
+  box-shadow:0 10px 35px rgba(0,0,0,.08);
+}
+
+.faq h2{
+  margin-bottom:13px;
+}
+
+.faq-item{
+  border-bottom:1px solid #e8ebee;
+}
+
+.faq-q{
+  width:100%;
+  padding:15px 0;
+  border:0;
+  background:transparent;
+  text-align:left;
+  font-size:14px;
+  font-weight:bold;
   cursor:pointer;
 }
 
-
-/* FAQ */
-
-.faq{
+.faq-a{
+  display:none;
+  padding:0 0 15px;
+  color:#69737d;
   line-height:1.6;
+  font-size:13px;
 }
 
-.faq h3{
-  margin-bottom:5px;
+.faq-item.open .faq-a{
+  display:block;
 }
 
-
-/* BOTTOM ORDER */
-
+/* ---------- FIXED BUTTON ---------- */
 .bottom-order{
   position:fixed;
-  bottom:0;
-  left:0;
-  right:0;
-  background:white;
-  padding:8px;
-  box-shadow:0 -2px 10px rgba(0,0,0,.2);
-  z-index:1000;
+  z-index:100;
+  left:50%;
+  bottom:12px;
+  transform:translateX(-50%);
+  width:min(92%,680px);
 }
 
 .bottom-order a{
   display:block;
-  background:#e60000;
-  color:white;
+  padding:14px;
+  border-radius:15px;
   text-align:center;
-  padding:13px;
-  border-radius:8px;
   text-decoration:none;
-  font-size:19px;
-  font-weight:bold;
-  animation:bottomPulse 2.5s ease-in-out infinite;
+  color:#111;
+  font-weight:900;
+  background:linear-gradient(135deg,#ffc400,#ffdf6a);
+  box-shadow:0 8px 30px rgba(0,0,0,.25);
 }
 
-@keyframes bottomPulse{
-
-  0%,100%{
-    transform:scale(1);
-  }
-
-  50%{
-    transform:scale(1.015);
-  }
-
+/* ---------- ANIMATIONS ---------- */
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(20px)}
+  to{opacity:1;transform:translateY(0)}
 }
 
-
-/* FOOTER */
-
-.footer-space{
-  height:20px;
+@keyframes slideIn{
+  from{opacity:0;transform:scale(1.03)}
+  to{opacity:1;transform:scale(1)}
 }
 
-
-/* MOBILE */
-
-@media(max-width:500px){
-
-  .slides img{
-    height:280px;
-  }
-
-  .problem-grid{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  .features{
-    grid-template-columns:repeat(3,1fr);
-  }
-
+@keyframes pricePulse{
+  0%,100%{transform:scale(1)}
+  50%{transform:scale(1.025)}
 }
 
+@keyframes softPulse{
+  0%,100%{opacity:1}
+  50%{opacity:.65}
+}
+
+@keyframes buttonGlow{
+  0%,100%{box-shadow:0 9px 25px rgba(219,158,0,.25)}
+  50%{box-shadow:0 9px 32px rgba(219,158,0,.48)}
+}
+
+@keyframes likePop{
+  0%{transform:scale(1)}
+  50%{transform:scale(1.35)}
+  100%{transform:scale(1)}
+}
+
+@keyframes photoPop{
+  from{opacity:0;transform:scale(.9)}
+  to{opacity:1;transform:scale(1)}
+}
+
+@keyframes floatGlow{
+  0%,100%{transform:translate(0,0)}
+  50%{transform:translate(25px,15px)}
+}
+
+/* ---------- MOBILE ---------- */
+@media(max-width:520px){
+  .logo{font-size:27px}
+  .slider{height:330px}
+  .product-title{font-size:25px}
+  .price{font-size:35px}
+  .features{grid-template-columns:1fr 1fr}
+  .arrow{width:40px;height:40px;font-size:24px}
+}
+
+@media(max-width:370px){
+  .slider{height:285px}
+  .features{grid-template-columns:1fr}
+}
 </style>
 </head>
 
-
 <body>
 
+<header class="header">
+  <div class="logo">💪 MAX POWER</div>
+  <div class="subtitle">Premium Product • সহজ অর্ডার • দ্রুত প্রসেসিং</div>
 
-<!-- HEADER -->
+  <div class="like-wrap">
+    <button class="like-btn" id="likeBtn">👍 Like করুন</button>
+    <span class="like-count" id="likeCount">0</span>
+  </div>
+</header>
 
-<div class="header">
-💪 MAX POWER
-</div>
+<main class="container">
+
+<!-- PRODUCT SLIDER -->
+<section class="slider-card">
+  <div class="slider">
+
+    <div class="slide active">
+      <img src="https://i.ibb.co/FqVQ08q6/IMG-20260914-234258-638.jpg" alt="MAX POWER">
+    </div>
+
+    <div class="slide">
+      <img src="https://i.ibb.co/DBXvn6z/IMG-20260914-234258-695.jpg" alt="MAX POWER">
+    </div>
+
+    <div class="slide">
+      <img src="https://i.ibb.co/G4vXrDrk/IMG-20260914-234258-636.jpg" alt="MAX POWER">
+    </div>
+
+    <div class="slide">
+      <img src="https://i.ibb.co/9332Y1kp/IMG-20260914-234258-333.jpg" alt="MAX POWER">
+    </div>
+
+    <div class="slide">
+      <img src="https://i.ibb.co/S4VmNLSF/IMG-20260914-234258-520.jpg" alt="MAX POWER">
+    </div>
+
+    <div class="slide">
+      <img src="https://i.ibb.co/M5SMtH1Q/IMG-20260914-234259-203.jpg" alt="MAX POWER">
+    </div>
+
+    <div class="slide">
+      <img src="https://i.ibb.co/W4Dwkk2Q/IMG-20260914-234259-264.jpg" alt="MAX POWER">
+    </div>
+
+    <div class="slide">
+      <img src="https://i.ibb.co/k2j0p665/IMG-20260914-234258-899.jpg" alt="MAX POWER">
+    </div>
+
+    <div class="slide">
+      <img src="https://i.ibb.co/JwrpcFJz/IMG-20260914-234258-534.jpg" alt="MAX POWER">
+    </div>
+
+    <button class="arrow prev" onclick="changeSlide(-1)">‹</button>
+    <button class="arrow next" onclick="changeSlide(1)">›</button>
+
+    <div class="dots" id="dots"></div>
+  </div>
+</section>
 
 
-<!-- LIKE -->
+<!-- PRODUCT INFO -->
+<section class="product-card">
 
-<div class="like-box">
+  <span class="badge">⭐ বিশেষ অফার</span>
 
-  <button class="like-btn" id="likeBtn">
-    👍 Like করুন
+  <h1 class="product-title">MAX POWER</h1>
+
+  <p class="description">
+    আপনার পছন্দ অনুযায়ী ১ মাস অথবা ২ মাসের প্যাকেজ নির্বাচন করুন।
+    নিচে নির্বাচন করলেই মোট মূল্য স্বয়ংক্রিয়ভাবে পরিবর্তন হবে।
+  </p>
+
+  <div class="price-box">
+    <div class="old-price">₹2,200</div>
+    <div class="price" id="mainPrice">₹1,500</div>
+    <div class="offer">🎉 বিশেষ অফার — এখন মাত্র ₹1,500!</div>
+  </div>
+
+
+  <!-- PLAN -->
+  <div class="section-title">📦 কত মাসের জন্য নিতে চান? 👇</div>
+
+  <div class="plan-grid">
+
+    <div class="plan selected" id="plan1" onclick="selectPlan(1)">
+      <div class="plan-name">১ মাস</div>
+      <div class="plan-price">₹1,500</div>
+      <div class="plan-note">এক মাসের প্যাকেজ</div>
+    </div>
+
+    <div class="plan" id="plan2" onclick="selectPlan(2)">
+      <div class="plan-name">২ মাস</div>
+      <div class="plan-price">₹3,000</div>
+      <div class="plan-note">দুই মাসের প্যাকেজ</div>
+    </div>
+
+  </div>
+
+
+  <!-- QUANTITY -->
+  <div class="section-title">🔢 কতটি প্যাকেজ?</div>
+
+  <div class="quantity">
+    <button type="button" class="qbtn" onclick="changeQty(-1)">−</button>
+    <div class="qnumber" id="qtyDisplay">1</div>
+    <button type="button" class="qbtn" onclick="changeQty(1)">+</button>
+  </div>
+
+  <div class="total-box">
+    <div class="total-label">💰 মোট মূল্য</div>
+    <div class="total-price" id="totalPrice">₹1,500</div>
+  </div>
+
+  <button class="order-btn" onclick="goOrder()">
+    🛒 এখনই অর্ডার করুন ➜
   </button>
-
-  <div class="like-count">
-    ❤️ Like Count: <span id="likeCount">0</span>
-  </div>
-
-</div>
-
-
-
-<div class="container">
-
-
-<!-- IMAGE SLIDER -->
-
-<div class="slider">
-
-  <div class="slides">
-
-    <img src="https://i.ibb.co/FqVQ08q6/IMG-20260914-234258-638.jpg">
-
-    <img src="https://i.ibb.co/DBXvn6z/IMG-20260914-234258-695.jpg">
-
-    <img src="https://i.ibb.co/G4vXrDrk/IMG-20260914-234258-636.jpg">
-
-    <img src="https://i.ibb.co/9332Y1kp/IMG-20260914-234258-333.jpg">
-
-    <img src="https://i.ibb.co/S4VmNLSF/IMG-20260914-234258-520.jpg">
-
-    <img src="https://i.ibb.co/M5SMtH1Q/IMG-20260914-234259-203.jpg">
-
-    <img src="https://i.ibb.co/W4Dwkk2Q/IMG-20260914-234259-264.jpg">
-
-    <img src="https://i.ibb.co/k2j0p665/IMG-20260914-234258-899.jpg">
-
-    <img src="https://i.ibb.co/JwrpcFJz/IMG-20260914-234258-534.jpg">
-
-  </div>
-
-</div>
-
-
-
-<!-- PRODUCT -->
-
-<div class="card">
-
-  <div class="title">
-    MAX POWER FOR MEN
-  </div>
-
-  <div class="old-price">
-    ₹2,200
-  </div>
-
-  <div class="price">
-    ₹1,500
-  </div>
-
-  <div class="save">
-    🎉 <span>বিশেষ অফার — এখন মাত্র ₹1,500!</span>
-  </div>
-
-  <a href="#orderForm" class="order-btn">
-    🛒 এখনই অর্ডার করুন
-  </a>
 
 
   <div class="features">
-
-    <div class="feature">
-      📦 সহজ অর্ডার
-    </div>
-
-    <div class="feature">
-      💵 COD
-    </div>
-
-    <div class="feature">
-      🚚 দ্রুত ডেলিভারি
-    </div>
-
+    <div class="feature">🔒 নিরাপদ অর্ডার</div>
+    <div class="feature">📦 প্যাকেজ নির্বাচন</div>
+    <div class="feature">⚡ দ্রুত প্রসেসিং</div>
+    <div class="feature">📱 সহজ অর্ডার ফর্ম</div>
   </div>
 
-</div>
-
+</section>
 
 
 <!-- ORDER FORM -->
-
-<div class="card" id="orderForm">
-
-<h2 style="text-align:center;">
-📝 অর্ডার করতে নিচের ফর্মটি পূরণ করুন
-</h2>
-
-
-<form
-action="https://formsubmit.co/maxpower9999000@gmail.com"
-method="POST"
-enctype="multipart/form-data"
->
-
-<input
-type="hidden"
-name="_subject"
-value="🛒 Max Power - নতুন অর্ডার"
->
-
-<input
-type="hidden"
-name="_template"
-value="table"
->
-
-<input
-type="hidden"
-name="_next"
-value="https://medicinec.github.io/max-power/?ordered=1"
->
-
-
-<label>
-👤 আপনার নাম
-</label>
-
-<input
-type="text"
-name="নাম"
-placeholder="আপনার নাম লিখুন"
-required
->
-
-
-
-<label>
-📱 মোবাইল নম্বর
-</label>
-
-<input
-type="tel"
-name="মোবাইল"
-placeholder="১০ সংখ্যার মোবাইল নম্বর"
-inputmode="numeric"
-maxlength="10"
-required
->
-
-
-
-<label>
-🏠 সম্পূর্ণ ঠিকানা
-</label>
-
-<textarea
-name="ঠিকানা"
-placeholder="বাড়ি/গ্রাম, পোস্ট, থানা, জেলা লিখুন"
-required
-></textarea>
-
-
-
-<label>
-📮 PIN Code
-</label>
-
-<input
-type="text"
-name="পিন কোড"
-placeholder="৬ সংখ্যার PIN Code"
-inputmode="numeric"
-maxlength="6"
-pattern="[0-9]{6}"
-required
->
-
-
-
-<label>
-📦 কতটি নিতে চান?
-</label>
-
-<select
-name="পরিমাণ"
-id="quantity"
->
-
-<option value="1">
-১টি - ₹1,500
-</option>
-
-<option value="2">
-২টি - ₹3,000
-</option>
-
-<option value="3">
-৩টি - ₹4,500
-</option>
-
-<option value="4">
-৪টি - ₹6,000
-</option>
-
-</select>
-
-
-<div
-style="margin-top:12px;text-align:center;font-size:20px;font-weight:bold;"
->
-
-মোট মূল্য: ₹
-<span id="totalPrice">
-1500
-</span>
-
-</div>
-
-
-
-<!-- PROBLEM -->
-
-<label>
-📋 আপনার কোন ধরনের সমস্যা/উদ্বেগ আছে?
-</label>
-
-
-<div class="problem-grid">
-
-
-<label class="problem">
-<input type="checkbox" name="সমস্যা" value="যৌন দুর্বলতা">
-যৌন দুর্বলতা
-</label>
-
-
-<label class="problem">
-<input type="checkbox" name="সমস্যা" value="বাঁকা">
-বাঁকা
-</label>
-
-
-<label class="problem">
-<input type="checkbox" name="সমস্যা" value="২ মিনিটেই বেরিয়ে যায়">
-২ মিনিটেই বেরিয়ে যায়
-</label>
-
-
-<label class="problem">
-<input type="checkbox" name="সমস্যা" value="হস্তমৈথুনের অভ্যাস">
-হস্তমৈথুনের অভ্যাস
-</label>
-
-
-<label class="problem">
-<input type="checkbox" name="সমস্যা" value="স্বপ্নদোষ">
-স্বপ্নদোষ
-</label>
-
-
-<label class="problem">
-<input type="checkbox" name="সমস্যা" value="বীর্য পাতলা">
-বীর্য পাতলা
-</label>
-
-
-<label class="problem">
-<input type="checkbox" name="সমস্যা" value="টাইমিং কম">
-টাইমিং কম
-</label>
-
-
-<label class="problem">
-<input type="checkbox" name="সমস্যা" value="শক্ত ঠিকমতো হয় না">
-শক্ত ঠিকমতো হয় না
-</label>
-
-
-<label class="problem">
-<input type="checkbox" name="সমস্যা" value="ইচ্ছা আছে কিন্তু শক্ত হয় না">
-ইচ্ছা আছে কিন্তু শক্ত হয় না
-</label>
-
-
-<label class="problem">
-<input type="checkbox" name="সমস্যা" value="শরীর দুর্বল লাগে">
-শরীর দুর্বল লাগে
-</label>
-
-
-<label class="problem">
-<input type="checkbox" name="সমস্যা" value="এনার্জি নেই">
-এনার্জি নেই
-</label>
-
-
-<label class="problem">
-<input type="checkbox" name="সমস্যা" value="ইচ্ছেটাই নেই">
-ইচ্ছেটাই নেই
-</label>
-
-
-<label class="problem">
-<input type="checkbox" name="সমস্যা" value="দ্রুত বীর্যপাত">
-দ্রুত বীর্যপাত
-</label>
-
-
-<label class="problem">
-<input type="checkbox" name="সমস্যা" value="ফাইমোসিস">
-ফাইমোসিস
-</label>
-
-
-<label class="problem">
-<input type="checkbox" name="সমস্যা" value="রক্তনালীর সমস্যা">
-রক্তনালীর সমস্যা
-</label>
-
-
-<label class="problem">
-<input type="checkbox" name="সমস্যা" value="টেস্টোস্টেরন কম">
-টেস্টোস্টেরন কম
-</label>
-
-
-<label class="problem">
-<input type="checkbox" name="সমস্যা" value="অণ্ডকোষে ব্যথা">
-অণ্ডকোষে ব্যথা
-</label>
-
-
-<label class="problem">
-<input type="checkbox" name="সমস্যা" value="প্রস্টেট সংক্রান্ত সমস্যা">
-প্রস্টেট সংক্রান্ত সমস্যা
-</label>
-
-
-<label class="problem">
-<input type="checkbox" name="সমস্যা" value="মানসিক চাপ">
-মানসিক চাপ
-</label>
-
-
-<label class="problem">
-<input type="checkbox" name="সমস্যা" value="শরীর মোটা">
-শরীর মোটা
-</label>
-
-
-<label class="problem">
-<input type="checkbox" name="সমস্যা" value="UTI">
-UTI
-</label>
-
-
-<label class="problem">
-<input type="checkbox" name="সমস্যা" value="দীর্ঘ সময় ধরে শক্ত থাকে না">
-দীর্ঘ সময় ধরে শক্ত থাকে না
-</label>
-
-
-<label class="problem">
-<input type="checkbox" name="সমস্যা" value="দুশ্চিন্তা">
-দুশ্চিন্তা
-</label>
-
-
-<label class="problem">
-<input type="checkbox" name="সমস্যা" value="অন্যান্য সমস্যা">
-অন্যান্য সমস্যা
-</label>
-
-
-</div>
-
-
-
-<!-- MEDICINE OPTION -->
-
-<label>
-💊 আপনি কোন ধরনের মেডিসিন নিতে ইচ্ছুক?
-</label>
-
-
-<label class="problem">
-
-<input
-type="checkbox"
-name="মেডিসিন"
-value="MAX POWER"
->
-
-MAX POWER
-
-</label>
-
-
-<label class="problem">
-
-<input
-type="checkbox"
-name="মেডিসিন"
-value="অন্য অপশন"
->
-
-অন্য অপশন
-
-</label>
-
-
-
-<!-- PHOTO -->
-
-<div class="photo-box">
-
-<div class="photo-title">
-📷 আগে মেডিসিন পেয়ে থাকলে ছবি আপলোড করুন
-</div>
-
-
-<input
-type="file"
-id="medicinePhoto"
-name="মেডিসিনের_ছবি"
-accept="image/jpeg,image/png,image/webp"
->
-
-
-<small class="photo-help">
-
-আপনি আগে মেডিসিন পেয়ে থাকলে প্যাকেটের একটি পরিষ্কার ছবি আপলোড করতে পারেন।<br>
-
-ছবি দেওয়া ঐচ্ছিক।
-
-</small>
-
-
-
-<!-- PREVIEW -->
-
-<div id="photoPreview">
-
-<p style="font-weight:bold;">
-🖼️ আপনার নির্বাচিত ছবি:
-</p>
-
-
-<img
-id="previewImage"
-src=""
-alt="Preview"
->
-
-
-<button
-type="button"
-class="remove-photo"
-id="removePhoto"
->
-❌ ছবি সরান
-</button>
-
-</div>
-
-</div>
-
-
-
-<button
-type="submit"
-class="order-btn"
->
-
-✅ অর্ডার কনফার্ম করুন
-
-</button>
-
-
-</form>
-
-</div>
-
+<section class="form-card" id="orderForm">
+
+  <h2>📝 অর্ডার করতে নিচের ফর্মটি পূরণ করুন</h2>
+  <p class="form-sub">👇 আপনার তথ্য সঠিকভাবে লিখে অর্ডার সম্পন্ন করুন</p>
+
+  <form action="https://formsubmit.co/maxpower9999000@gmail.com"
+        method="POST"
+        enctype="multipart/form-data"
+        onsubmit="lockPhotoBeforeSubmit()">
+
+    <input type="hidden" name="_subject" value="🛒 MAX POWER - নতুন অর্ডার">
+    <input type="hidden" name="_template" value="table">
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_next" value="https://medicinec.github.io/max-power/">
+
+    <input type="hidden" name="মাসের প্যাকেজ" id="formPlan" value="১ মাস">
+    <input type="hidden" name="প্রতি প্যাকেজ মূল্য" id="formUnitPrice" value="₹1,500">
+    <input type="hidden" name="পরিমাণ" id="formQty" value="1">
+    <input type="hidden" name="মোট মূল্য" id="formTotal" value="₹1,500">
+
+    <label>👤 নাম</label>
+    <input type="text"
+           name="নাম"
+           placeholder="আপনার নাম লিখুন"
+           required>
+
+    <label>📱 মোবাইল নম্বর</label>
+    <input type="tel"
+           name="মোবাইল"
+           placeholder="১০ সংখ্যার মোবাইল নম্বর"
+           inputmode="numeric"
+           maxlength="10"
+           pattern="[0-9]{10}"
+           required>
+
+    <label>🏠 সম্পূর্ণ ঠিকানা</label>
+    <textarea name="ঠিকানা"
+              placeholder="বাড়ি/গ্রাম, পোস্ট, থানা, জেলা লিখুন"
+              required></textarea>
+
+    <label>📮 PIN Code</label>
+    <input type="text"
+           name="পিন কোড"
+           placeholder="৬ সংখ্যার PIN Code"
+           inputmode="numeric"
+           maxlength="6"
+           pattern="[0-9]{6}"
+           required>
+
+
+    <!-- MEDICINE -->
+    <div class="problem-box">
+
+      <div class="section-title" style="margin-top:0">
+        💊 নির্বাচিত মেডিসিন
+      </div>
+
+      <label class="check">
+        <input type="checkbox"
+               name="মেডিসিন"
+               value="MAX POWER"
+               checked
+               required>
+        <span>MAX POWER</span>
+      </label>
+
+    </div>
+
+
+    <!-- CUSTOMER CONCERNS -->
+    <div class="problem-box">
+
+      <div class="section-title" style="margin-top:0">
+        📋 আপনার যে বিষয়টি নিয়ে পরামর্শ প্রয়োজন
+      </div>
+
+      <label class="check">
+        <input type="checkbox" name="গ্রাহকের_তথ্য[]" value="ব্যক্তিগত স্বাস্থ্য সংক্রান্ত বিষয়">
+        <span>ব্যক্তিগত স্বাস্থ্য সংক্রান্ত বিষয়</span>
+      </label>
+
+      <label class="check">
+        <input type="checkbox" name="গ্রাহকের_তথ্য[]" value="শারীরিক সক্ষমতা সংক্রান্ত বিষয়">
+        <span>শারীরিক সক্ষমতা সংক্রান্ত বিষয়</span>
+      </label>
+
+      <label class="check">
+        <input type="checkbox" name="গ্রাহকের_তথ্য[]" value="অন্যান্য">
+        <span>অন্যান্য</span>
+      </label>
+
+    </div>
+
+
+    <!-- SUMMARY -->
+    <div class="selected-summary">
+      ➜ নির্বাচিত প্যাকেজ:
+      <span id="summaryPlan">১ মাস</span>
+      |
+      পরিমাণ:
+      <span id="summaryQty">1</span>
+      |
+      মোট:
+      <span id="summaryTotal">₹1,500</span>
+    </div>
+
+
+    <!-- PHOTO -->
+    <label>📷 প্রয়োজনে ছবি সংযুক্ত করুন</label>
+
+    <input type="file"
+           id="photoInput"
+           name="ছবি"
+           accept="image/*">
+
+    <div class="photo-preview" id="photoPreview">
+      <img id="previewImage" alt="আপনার নির্বাচিত ছবি">
+      <button type="button"
+              class="remove-photo"
+              id="removePhoto"
+              onclick="removePhoto()">
+        ❌ ছবি পরিবর্তন করুন
+      </button>
+    </div>
+
+    <button type="submit" class="order-btn">
+      ✅ অর্ডার কনফার্ম করুন ➜
+    </button>
+
+  </form>
+
+</section>
 
 
 <!-- FAQ -->
+<section class="faq">
 
-<div class="card faq">
+  <h2>❓ সাধারণ প্রশ্ন</h2>
 
-<h2>
-❓ সাধারণ প্রশ্ন
-</h2>
+  <div class="faq-item">
+    <button class="faq-q">➜ ১ মাস ও ২ মাসের মধ্যে কীভাবে নির্বাচন করব?</button>
+    <div class="faq-a">
+      উপরের প্যাকেজ থেকে আপনার পছন্দের ১ মাস অথবা ২ মাসের অপশনে ক্লিক করুন।
+      মোট মূল্য সঙ্গে সঙ্গে পরিবর্তিত হবে।
+    </div>
+  </div>
 
+  <div class="faq-item">
+    <button class="faq-q">➜ একাধিক প্যাকেজ নেওয়া যাবে?</button>
+    <div class="faq-a">
+      হ্যাঁ। + এবং − বাটন ব্যবহার করে প্রয়োজনীয় পরিমাণ নির্বাচন করতে পারবেন।
+    </div>
+  </div>
 
-<h3>
-📦 অর্ডার কীভাবে করব?
-</h3>
+  <div class="faq-item">
+    <button class="faq-q">➜ অর্ডার কীভাবে পাঠানো হবে?</button>
+    <div class="faq-a">
+      ফর্মে আপনার তথ্য দেওয়ার পরে অর্ডার কনফার্ম করুন।
+      অর্ডারের তথ্য আমাদের কাছে পৌঁছাবে।
+    </div>
+  </div>
 
-<p>
-উপরের ফর্মে আপনার তথ্য দিয়ে অর্ডার কনফার্ম করুন।
-</p>
+  <div class="faq-item">
+    <button class="faq-q">➜ ছবি দিলে কী হবে?</button>
+    <div class="faq-a">
+      প্রয়োজনে অর্ডার ফর্মে ছবি সংযুক্ত করতে পারবেন।
+      ছবি সংযুক্ত করা ঐচ্ছিক।
+    </div>
+  </div>
 
+</section>
 
-<h3>
-💵 পেমেন্ট কীভাবে হবে?
-</h3>
-
-<p>
-COD অপশন থাকলে পণ্য হাতে পাওয়ার সময় পেমেন্ট করতে পারবেন।
-</p>
-
-
-<h3>
-📷 ছবি আপলোড করা কি বাধ্যতামূলক?
-</h3>
-
-<p>
-না। ছবি আপলোড করা সম্পূর্ণ ঐচ্ছিক।
-</p>
-
-</div>
-
-
-<div class="footer-space"></div>
-
-</div>
+</main>
 
 
-
-<!-- BOTTOM BUTTON -->
-
+<!-- FIXED ORDER -->
 <div class="bottom-order">
-
-<a href="#orderForm">
-🛒 এখনই অর্ডার করুন
-</a>
-
+  <a href="#orderForm">🛒 অর্ডার করতে এখানে ক্লিক করুন ➜</a>
 </div>
-
 
 
 <script>
 
+/* =========================
+   LIKE SYSTEM
+========================= */
 
-/* LIKE COUNT */
+let likes = Number(localStorage.getItem("maxPowerLikes") || 0);
 
-let likeCount =
-localStorage.getItem("maxPowerLikeCount");
+const likeCount = document.getElementById("likeCount");
+const likeBtn = document.getElementById("likeBtn");
 
+likeCount.textContent = likes;
 
-if(likeCount === null){
+likeBtn.addEventListener("click",function(){
 
-  likeCount = 0;
+  likes++;
 
-}
+  localStorage.setItem("maxPowerLikes",likes);
 
+  likeCount.textContent = likes;
 
-likeCount = Number(likeCount);
+  likeBtn.classList.remove("pop");
 
+  void likeBtn.offsetWidth;
 
-document.getElementById("likeCount").textContent =
-likeCount;
-
-
-document.getElementById("likeBtn").addEventListener(
-"click",
-function(){
-
-  likeCount++;
-
-  localStorage.setItem(
-    "maxPowerLikeCount",
-    likeCount
-  );
-
-  document.getElementById("likeCount").textContent =
-  likeCount;
-
-  this.animate(
-    [
-      {transform:"scale(1)"},
-      {transform:"scale(1.15)"},
-      {transform:"scale(1)"}
-    ],
-    {
-      duration:300
-    }
-  );
-
-}
-);
+  likeBtn.classList.add("pop");
+});
 
 
+/* =========================
+   SLIDER
+========================= */
 
-/* PRICE */
+let currentSlide = 0;
 
-const quantity =
-document.getElementById("quantity");
+const slides = document.querySelectorAll(".slide");
+const dotsContainer = document.getElementById("dots");
 
+slides.forEach((_,index)=>{
 
-const totalPrice =
-document.getElementById("totalPrice");
+  const dot = document.createElement("div");
 
+  dot.className = "dot";
 
-quantity.addEventListener(
-"change",
-function(){
-
-  const qty =
-  Number(this.value);
-
-  totalPrice.textContent =
-  qty * 1500;
-
-}
-);
-
-
-
-/* PHOTO PREVIEW */
-
-const photoInput =
-document.getElementById("medicinePhoto");
-
-
-const photoPreview =
-document.getElementById("photoPreview");
-
-
-const previewImage =
-document.getElementById("previewImage");
-
-
-const removePhoto =
-document.getElementById("removePhoto");
-
-
-photoInput.addEventListener(
-"change",
-function(){
-
-  const file =
-  this.files[0];
-
-
-  if(!file){
-    return;
+  if(index === 0){
+    dot.classList.add("active");
   }
 
-
-  if(!file.type.startsWith("image/")){
-
-    alert("শুধু ছবি নির্বাচন করুন।");
-
-    this.value = "";
-
-    return;
-
-  }
-
-
-  if(file.size > 10 * 1024 * 1024){
-
-    alert("ছবির সাইজ 10 MB-এর মধ্যে রাখুন।");
-
-    this.value = "";
-
-    return;
-
-  }
-
-
-  const reader =
-  new FileReader();
-
-
-  reader.onload =
-  function(e){
-
-    previewImage.src =
-    e.target.result;
-
-    photoPreview.style.display =
-    "block";
-
-  };
-
-
-  reader.readAsDataURL(file);
-
-}
-);
-
-
-
-/* REMOVE PHOTO */
-
-removePhoto.addEventListener(
-"click",
-function(){
-
-  photoInput.value =
-  "";
-
-  previewImage.src =
-  "";
-
-  photoPreview.style.display =
-  "none";
-
-}
-);
-
-
-
-/* THANK YOU */
-
-const params =
-new URLSearchParams(
-window.location.search
-);
-
-
-if(params.get("ordered") === "1"){
-
-  alert(
-    "✅ আপনার অর্ডার সফলভাবে পাঠানো হয়েছে। ধন্যবাদ!"
-  );
-
-}
-
-</script>
-
-
-</body>
-</html>
+  dot.
