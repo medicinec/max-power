@@ -3,132 +3,136 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Max Power | Order Now</title>
+<title>Max Power</title>
 
 <style>
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-}
+*{box-sizing:border-box}
 
 body{
+  margin:0;
   font-family:Arial,"Noto Sans Bengali",sans-serif;
   background:#f5f7fa;
   color:#222;
 }
 
 header{
-  background:linear-gradient(135deg,#111827,#263238);
+  background:linear-gradient(135deg,#101c2b,#20364a);
   color:white;
   text-align:center;
-  padding:22px 15px;
+  padding:35px 15px;
 }
 
 header h1{
-  font-size:32px;
-  margin-bottom:6px;
+  margin:0;
+  font-size:40px;
 }
 
 header p{
-  font-size:15px;
-  opacity:.9;
+  font-size:21px;
+  margin:10px 0 0;
 }
 
-.container{
-  max-width:700px;
-  margin:auto;
-  padding:18px;
-}
-
-/* IMAGE SLIDER */
 .slider{
-  position:relative;
-  width:100%;
-  height:430px;
+  width:92%;
+  max-width:650px;
+  margin:35px auto 25px;
   overflow:hidden;
-  border-radius:20px;
+  border-radius:25px;
   background:white;
+  padding:10px;
   box-shadow:0 8px 25px rgba(0,0,0,.12);
 }
 
-.slide{
-  position:absolute;
-  width:100%;
-  height:100%;
-  object-fit:contain;
-  opacity:0;
-  animation:slideShow 27s infinite;
-  padding:10px;
+.slides{
+  display:flex;
+  animation:slide 27s infinite;
 }
 
-.slide:nth-child(1){animation-delay:0s}
-.slide:nth-child(2){animation-delay:3s}
-.slide:nth-child(3){animation-delay:6s}
-.slide:nth-child(4){animation-delay:9s}
-.slide:nth-child(5){animation-delay:12s}
-.slide:nth-child(6){animation-delay:15s}
-.slide:nth-child(7){animation-delay:18s}
-.slide:nth-child(8){animation-delay:21s}
-.slide:nth-child(9){animation-delay:24s}
+.slides img{
+  width:100%;
+  min-width:100%;
+  height:580px;
+  object-fit:contain;
+  border-radius:18px;
+}
 
-@keyframes slideShow{
-  0%{opacity:0}
-  5%{opacity:1}
-  11%{opacity:1}
-  16%{opacity:0}
-  100%{opacity:0}
+@keyframes slide{
+  0%,10%{transform:translateX(0)}
+  12%,21%{transform:translateX(-100%)}
+  23%,32%{transform:translateX(-200%)}
+  34%,43%{transform:translateX(-300%)}
+  45%,54%{transform:translateX(-400%)}
+  56%,65%{transform:translateX(-500%)}
+  67%,76%{transform:translateX(-600%)}
+  78%,87%{transform:translateX(-700%)}
+  89%,98%{transform:translateX(-800%)}
+  100%{transform:translateX(0)}
 }
 
 .card{
+  width:92%;
+  max-width:650px;
+  margin:25px auto;
   background:white;
-  margin-top:20px;
-  padding:24px;
-  border-radius:20px;
-  box-shadow:0 5px 20px rgba(0,0,0,.08);
+  padding:30px;
+  border-radius:28px;
+  box-shadow:0 8px 25px rgba(0,0,0,.08);
+  text-align:center;
 }
 
-h2{
-  text-align:center;
-  color:#111827;
-  margin-bottom:12px;
+.card h2{
+  font-size:34px;
+  margin:0 0 15px;
+  color:#101c2b;
 }
 
-.description{
-  text-align:center;
-  line-height:1.7;
+.card p{
+  font-size:20px;
+  line-height:1.6;
   color:#555;
 }
 
+.old-price{
+  font-size:24px;
+  color:#777;
+  text-decoration:line-through;
+  margin-top:20px;
+}
+
 .price{
-  text-align:center;
-  font-size:30px;
+  font-size:48px;
   font-weight:bold;
-  color:#e53935;
-  margin:18px 0;
+  color:#e51f2a;
+  margin:5px 0 20px;
+}
+
+.order-btn{
+  display:inline-block;
+  background:#e51f2a;
+  color:white;
+  padding:16px 35px;
+  border-radius:12px;
+  text-decoration:none;
+  font-size:21px;
+  font-weight:bold;
 }
 
 .features{
-  margin-top:15px;
+  text-align:left;
+  font-size:18px;
+  line-height:2;
+  margin-top:20px;
 }
 
-.features p{
-  background:#f1f8e9;
-  padding:11px;
-  margin:8px 0;
-  border-radius:10px;
-}
-
-.order-title{
-  text-align:center;
-  color:#111827;
-  margin-bottom:18px;
+form{
+  text-align:left;
 }
 
 label{
   display:block;
   font-weight:bold;
-  margin:13px 0 6px;
+  margin-top:15px;
+  margin-bottom:7px;
 }
 
 input,select,textarea{
@@ -137,56 +141,36 @@ input,select,textarea{
   border:1px solid #ccc;
   border-radius:10px;
   font-size:16px;
-  outline:none;
 }
 
-input:focus,select:focus,textarea:focus{
-  border-color:#2196f3;
+textarea{
+  height:100px;
+  resize:none;
 }
 
-button{
+.submit{
   width:100%;
-  margin-top:22px;
-  padding:16px;
+  margin-top:25px;
+  padding:17px;
   border:0;
   border-radius:12px;
-  background:linear-gradient(135deg,#16a34a,#15803d);
+  background:#0b9b4b;
   color:white;
-  font-size:19px;
+  font-size:20px;
   font-weight:bold;
-  cursor:pointer;
-}
-
-button:active{
-  transform:scale(.98);
-}
-
-.note{
-  text-align:center;
-  margin-top:12px;
-  font-size:13px;
-  color:#777;
 }
 
 footer{
   text-align:center;
-  padding:25px 10px;
+  padding:30px;
   color:#777;
-  font-size:13px;
 }
 
-@media(max-width:500px){
-  .slider{
-    height:350px;
-  }
-
-  header h1{
-    font-size:28px;
-  }
-
-  .card{
-    padding:18px;
-  }
+@media(max-width:600px){
+  header h1{font-size:34px}
+  header p{font-size:18px}
+  .slides img{height:480px}
+  .price{font-size:42px}
 }
 </style>
 </head>
@@ -198,51 +182,93 @@ footer{
   <p>Product Information & Order</p>
 </header>
 
-<div class="container">
+<div class="slider">
+  <div class="slides">
 
-  <!-- PRODUCT IMAGES -->
-  <div class="slider">
-
-    <img class="slide"
-    src="https://i.ibb.co/FqVQ08q6/IMG-20260914-234258-638.jpg">
-
-    <img class="slide"
-    src="https://i.ibb.co/DBXvn6z/IMG-20260914-234258-695.jpg">
-
-    <img class="slide"
-    src="https://i.ibb.co/G4vXrDrk/IMG-20260914-234258-636.jpg">
-
-    <img class="slide"
-    src="https://i.ibb.co/9332Y1kp/IMG-20260914-234258-333.jpg">
-
-    <img class="slide"
-    src="https://i.ibb.co/S4VmNLSF/IMG-20260914-234258-520.jpg">
-
-    <img class="slide"
-    src="https://i.ibb.co/M5SMtH1Q/IMG-20260914-234259-203.jpg">
-
-    <img class="slide"
-    src="https://i.ibb.co/W4Dwkk2Q/IMG-20260914-234259-264.jpg">
-
-    <img class="slide"
-    src="https://i.ibb.co/k2j0p665/IMG-20260914-234258-899.jpg">
-
-    <img class="slide"
-    src="https://i.ibb.co/JwrpcFJz/IMG-20260914-234258-534.jpg">
+    <img src="https://i.ibb.co/FqVQ08q6/IMG-20260914-234258-638.jpg">
+    <img src="https://i.ibb.co/DBXvn6z/IMG-20260914-234258-695.jpg">
+    <img src="https://i.ibb.co/G4vXrDrk/IMG-20260914-234258-636.jpg">
+    <img src="https://i.ibb.co/9332Y1kp/IMG-20260914-234258-333.jpg">
+    <img src="https://i.ibb.co/S4VmNLSF/IMG-20260914-234258-520.jpg">
+    <img src="https://i.ibb.co/M5SMtH1Q/IMG-20260914-234259-203.jpg">
+    <img src="https://i.ibb.co/W4Dwkk2Q/IMG-20260914-234259-264.jpg">
+    <img src="https://i.ibb.co/k2j0p665/IMG-20260914-234258-899.jpg">
+    <img src="https://i.ibb.co/JwrpcFJz/IMG-20260914-234258-534.jpg">
 
   </div>
+</div>
 
-  <!-- PRODUCT INFO -->
-  <div class="card">
+<div class="card">
 
-    <h2>MAX POWER</h2>
+  <h2>MAX POWER</h2>
 
-    <p class="description">
-      Max Power পণ্যের তথ্য দেখুন এবং নিচের ফর্ম পূরণ করে অর্ডার করুন।
-    </p>
+  <p>
+    Max Power পণ্যের তথ্য দেখুন এবং নিচের ফর্ম পূরণ করে অর্ডার করুন।
+  </p>
 
-    <div class="price">
-      ₹1,500
-    </div>
+  <div class="old-price">₹2,200</div>
+  <div class="price">₹1,500</div>
 
-    <div
+  <a href="#order" class="order-btn">🛒 এখনই অর্ডার করুন</a>
+
+  <div class="features">
+    ✅ সহজ অর্ডার প্রক্রিয়া<br>
+    ✅ Cash on Delivery সুবিধা<br>
+    ✅ দ্রুত ডেলিভারি<br>
+    ✅ কাস্টমার সাপোর্ট
+  </div>
+
+</div>
+
+<div class="card" id="order">
+
+  <h2>🛒 অর্ডার করুন</h2>
+
+  <form action="https://formsubmit.co/maxpower9999000@gmail.com" method="POST">
+
+    <input type="hidden" name="_subject" value="🛒 Max Power - নতুন অর্ডার">
+    <input type="hidden" name="_template" value="table">
+
+    <label>👤 নাম</label>
+    <input type="text" name="নাম" placeholder="আপনার নাম লিখুন" required>
+
+    <label>📱 মোবাইল</label>
+    <input type="tel" name="মোবাইল" placeholder="আপনার মোবাইল নম্বর" required>
+
+    <label>🏠 ঠিকানা</label>
+    <textarea name="ঠিকানা" placeholder="সম্পূর্ণ ঠিকানা লিখুন" required></textarea>
+
+    <label>📮 PIN Code</label>
+    <input
+      type="text"
+      name="পিন কোড"
+      placeholder="৬ সংখ্যার PIN Code"
+      inputmode="numeric"
+      maxlength="6"
+      pattern="[0-9]{6}"
+      required
+    >
+
+    <label>📦 পরিমাণ</label>
+    <select name="পরিমাণ" required>
+      <option value="">পরিমাণ নির্বাচন করুন</option>
+      <option value="১টি">১টি</option>
+      <option value="২টি">২টি</option>
+      <option value="৩টি">৩টি</option>
+      <option value="৪টি">৪টি</option>
+    </select>
+
+    <button type="submit" class="submit">
+      ✅ অর্ডার কনফার্ম করুন
+    </button>
+
+  </form>
+
+</div>
+
+<footer>
+  © 2026 Max Power
+</footer>
+
+</body>
+</html>
