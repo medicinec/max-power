@@ -2,339 +2,64 @@
 <html lang="bn">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Phone Market — Online Mobile Store</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Phone Market | Mobile Store</title>
 
 <style>
 *{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f1f3f6;color:#172033}
+header{background:#2874f0;color:white;padding:12px 4%}
+.head{max-width:1200px;margin:auto;display:flex;gap:15px;align-items:center;flex-wrap:wrap}
+.logo{font-size:25px;font-weight:bold;white-space:nowrap}
+.search{flex:1;display:flex;min-width:220px}
+.search input{width:100%;padding:12px;border:0;border-radius:4px 0 0 4px;font-size:15px}
+.search button{border:0;background:#ffca28;padding:0 18px;border-radius:0 4px 4px 0}
+.cart{font-weight:bold;white-space:nowrap}
 
-body{
- margin:0;
- font-family:Arial,system-ui,sans-serif;
- background:#f5f7fb;
- color:#172033
-}
+nav{background:white;padding:13px;box-shadow:0 2px 5px #0002}
+.nav{max-width:1200px;margin:auto;display:flex;gap:25px;overflow:auto}
+.nav button{border:0;background:none;font-weight:bold;cursor:pointer;white-space:nowrap}
 
-header{
- background:#2874f0;
- color:white;
- position:sticky;
- top:0;
- z-index:10
-}
+.hero{max-width:1200px;margin:18px auto;padding:28px;border-radius:12px;background:linear-gradient(120deg,#143d91,#2874f0);color:white;display:flex;justify-content:space-between;align-items:center}
+.hero h1{margin:0 0 8px;font-size:32px}
+.timer{background:white;color:#173b91;padding:15px 22px;border-radius:10px;text-align:center;font-size:25px;font-weight:bold}
 
-.top{
- max-width:1200px;
- margin:auto;
- padding:12px 16px;
- display:flex;
- align-items:center;
- gap:18px
-}
+.container{max-width:1200px;margin:auto;padding:0 15px 40px}
+h2{margin-top:25px}
 
-.logo{
- font-size:24px;
- font-weight:800;
- white-space:nowrap
-}
+.products{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}
+.card{background:white;padding:12px;border-radius:10px;box-shadow:0 2px 8px #0001;position:relative}
+.offer{position:absolute;top:10px;left:10px;background:#e53935;color:white;padding:5px 8px;border-radius:4px;font-size:12px;font-weight:bold}
+.photo{height:210px;background:#fafafa;border-radius:8px;display:flex;align-items:center;justify-content:center}
+.photo img{max-width:95%;max-height:200px;object-fit:contain}
+.name{font-weight:bold;font-size:17px;margin-top:10px}
+.spec{color:#667085;font-size:13px;margin:6px 0}
+.old{text-decoration:line-through;color:#777}
+.price{font-size:21px;font-weight:bold;margin:4px 0}
+.discount{color:#078b43;font-weight:bold}
+.offertext{background:#fff4d6;padding:7px;border-radius:5px;margin-top:8px;font-size:13px;font-weight:bold}
+.buttons{display:flex;gap:7px;margin-top:10px}
+.buttons button{flex:1;border:0;padding:11px;border-radius:6px;font-weight:bold;cursor:pointer}
+.add{background:#ffb300}
+.buy{background:#2874f0;color:white}
 
-.tag{
- font-size:11px;
- opacity:.9
-}
+#checkout{display:none;background:white;padding:20px;border-radius:10px;margin-top:25px}
+#checkout input,#checkout textarea{width:100%;padding:12px;margin:7px 0;border:1px solid #ccc;border-radius:5px}
+.orderbtn{background:#159447;color:white;border:0;padding:13px 20px;border-radius:6px;font-weight:bold;width:100%}
 
-.search{
- flex:1;
- display:flex
-}
+footer{background:#172033;color:white;text-align:center;padding:25px;margin-top:30px}
 
-.search input{
- width:100%;
- padding:12px 14px;
- border:0;
- border-radius:4px 0 0 4px;
- font-size:15px
-}
-
-.search button{
- border:0;
- padding:0 18px;
- background:#ffca28;
- cursor:pointer;
- font-size:18px;
- border-radius:0 4px 4px 0
-}
-
-.cart{
- font-weight:700;
- white-space:nowrap
-}
-
-.nav{
- background:white;
- box-shadow:0 2px 8px #00000012
-}
-
-.navin{
- max-width:1200px;
- margin:auto;
- display:flex;
- gap:24px;
- padding:13px 16px;
- overflow:auto
-}
-
-.nav a{
- color:#172033;
- text-decoration:none;
- white-space:nowrap;
- font-weight:600
-}
-
-.hero{
- max-width:1200px;
- margin:18px auto;
- padding:28px 20px;
- border-radius:12px;
- background:linear-gradient(120deg,#173b91,#2874f0);
- color:white;
- display:flex;
- justify-content:space-between;
- align-items:center;
- gap:20px
-}
-
-.hero h1{
- margin:0 0 8px;
- font-size:32px
-}
-
-.hero p{
- margin:5px 0
-}
-
-.deal{
- background:white;
- color:#173b91;
- border-radius:10px;
- padding:14px 20px;
- text-align:center;
- min-width:180px
-}
-
-.time{
- font-size:25px;
- font-weight:800;
- margin-top:5px
-}
-
-.wrap{
- max-width:1200px;
- margin:0 auto;
- padding:0 16px 30px
-}
-
-.title{
- display:flex;
- justify-content:space-between;
- align-items:center;
- margin:20px 0 12px
-}
-
-.title h2{
- margin:0
-}
-
-.grid{
- display:grid;
- grid-template-columns:repeat(4,1fr);
- gap:14px
-}
-
-.card{
- background:white;
- border-radius:10px;
- padding:14px;
- box-shadow:0 2px 8px #0000000c;
- position:relative
-}
-
-.badge{
- position:absolute;
- top:10px;
- left:10px;
- background:#e53935;
- color:white;
- padding:5px 8px;
- border-radius:4px;
- font-size:11px;
- font-weight:700
-}
-
-.pic{
- height:190px;
- display:flex;
- align-items:center;
- justify-content:center;
- background:#fafafa;
- border-radius:8px;
- margin-bottom:10px
-}
-
-.pic img{
- max-width:90%;
- max-height:180px;
- object-fit:contain
-}
-
-.name{
- font-weight:700;
- min-height:42px
-}
-
-.spec{
- font-size:12px;
- color:#667085;
- margin:5px 0
-}
-
-.old{
- text-decoration:line-through;
- color:#8a93a3;
- font-size:13px
-}
-
-.price{
- font-size:20px;
- font-weight:800;
- margin:3px 0
-}
-
-.off{
- color:#159447;
- font-size:13px;
- font-weight:700
-}
-
-.actions{
- display:flex;
- gap:8px;
- margin-top:10px
-}
-
-.actions button{
- flex:1;
- padding:10px;
- border:0;
- border-radius:6px;
- font-weight:700;
- cursor:pointer
-}
-
-.cartbtn{
- background:#ffb300
-}
-
-.buybtn{
- background:#2874f0;
- color:white
-}
-
-.note{
- font-size:12px;
- color:#667085;
- text-align:center;
- margin-top:20px
-}
-
-footer{
- background:#172033;
- color:white;
- padding:25px 16px;
- text-align:center
-}
-
-@media(max-width:850px){
-
- .grid{
-  grid-template-columns:repeat(2,1fr)
- }
-
- .hero{
-  margin:12px
- }
-
- .hero h1{
-  font-size:25px
- }
-
- .deal{
-  min-width:150px
- }
-}
-
-@media(max-width:560px){
-
- .top{
-  flex-wrap:wrap;
-  gap:10px
- }
-
- .logo{
-  width:100%
- }
-
- .search{
-  order:2;
-  width:100%
- }
-
- .cart{
-  font-size:13px
- }
-
- .hero{
-  flex-direction:column;
-  align-items:stretch
- }
-
- .deal{
-  min-width:0
- }
-
- .grid{
-  grid-template-columns:repeat(2,1fr);
-  gap:9px
- }
-
- .card{
-  padding:9px
- }
-
- .pic{
-  height:145px
- }
-
- .pic img{
-  max-height:135px
- }
-
- .name{
-  font-size:14px
- }
-
- .price{
-  font-size:17px
- }
-
- .actions{
-  flex-direction:column
- }
-
- .navin{
-  gap:16px
- }
+@media(max-width:900px){.products{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:650px){
+.products{grid-template-columns:repeat(2,1fr);gap:9px}
+.hero{margin:10px;display:block}
+.timer{margin-top:15px}
+.photo{height:150px}
+.photo img{max-height:140px}
+.name{font-size:14px}
+.price{font-size:18px}
+.buttons{display:block}
+.buttons button{width:100%;margin-top:5px}
 }
 </style>
 </head>
@@ -342,76 +67,30 @@ footer{
 <body>
 
 <header>
-
-<div class="top">
-
-<div class="logo">
-📱 Phone Market
-<div class="tag">Smartphones • Great Deals</div>
-</div>
+<div class="head">
+<div class="logo">📱 Phone Market</div>
 
 <div class="search">
-
-<input
-id="search"
-placeholder="Search phones, brands..."
-oninput="filterProducts()"
->
-
+<input id="search" placeholder="ফোন বা ব্র্যান্ড খুঁজুন..." oninput="searchProducts()">
 <button>🔍</button>
-
 </div>
 
-<div class="cart">
-🛒 Cart (<span id="cartCount">0</span>)
+<div class="cart">🛒 Cart: <span id="cart">0</span></div>
 </div>
-
-</div>
-
 </header>
 
-
-<nav class="nav">
-
-<div class="navin">
-
-<a href="#" onclick="showBrand('all')">
-All Phones
-</a>
-
-<a href="#" onclick="showBrand('Apple')">
-iPhone
-</a>
-
-<a href="#" onclick="showBrand('Samsung')">
-Samsung
-</a>
-
-<a href="#" onclick="showBrand('OnePlus')">
-OnePlus
-</a>
-
-<a href="#" onclick="showBrand('Vivo')">
-Vivo
-</a>
-
-<a href="#" onclick="showBrand('Oppo')">
-Oppo
-</a>
-
-<a href="#" onclick="showBrand('Xiaomi')">
-Xiaomi
-</a>
-
+<nav>
+<div class="nav">
+<button onclick="filterBrand('all')">সব ফোন</button>
+<button onclick="filterBrand('Apple')">Apple</button>
+<button onclick="filterBrand('Samsung')">Samsung</button>
+<button onclick="filterBrand('OnePlus')">OnePlus</button>
+<button onclick="filterBrand('Vivo')">Vivo</button>
+<button onclick="filterBrand('Oppo')">Oppo</button>
+<button onclick="filterBrand('Xiaomi')">Xiaomi</button>
 </div>
-
 </nav>
 
-
 <section class="hero">
-
 <div>
-
-<h1>🔥 Mega Phone Deals</h1>
-
-<p
+<h1>🔥 Phone Market Mega Offer</
